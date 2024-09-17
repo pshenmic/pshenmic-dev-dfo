@@ -1,0 +1,108 @@
+{
+  "Project": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "position": 0,
+        "type": "string",
+        "description": "Project name",
+        "maxLength": 63
+      },
+      "description": {
+        "position": 1,
+        "type": "string",
+        "description": "Project description",
+        "maxLength": 1000
+      },
+      "url": {
+        "position": 2,
+        "type": "string",
+        "description": "Project URL",
+        "maxLength": 255
+      }
+    },
+    "required": [
+      "name",
+      "$createdAt",
+      "$updatedAt"
+    ],
+    "additionalProperties": false
+  },
+  "Tasks": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "position": 0,
+        "type": "string",
+        "description": "Task title",
+        "maxLength": 63
+      },
+      "description": {
+        "position": 1,
+        "type": "string",
+        "description": "Task description",
+        "maxLength": 1000
+      },
+      "url": {
+        "position": 2,
+        "type": "string",
+        "description": "Task URL",
+        "maxLength": 255
+      },
+      "assignee": {
+        "position": 3,
+        "type": "array",
+        "description": "Task assignee executor",
+        "byteArray": true,
+        "minItems": 32,
+        "maxItems": 32
+      },
+      "projectId": {
+        "position": 4,
+        "type": "string",
+        "description": "Project Id",
+        "minLength": 43,
+        "maxLength": 44
+      }
+    },
+    "required": [
+      "title",
+      "projectId",
+      "$createdAt",
+      "$updatedAt"
+    ],
+    "additionalProperties": false
+  },
+  "Claim": {
+    "type": "object",
+    "properties": {
+      "taskId": {
+        "position": 0,
+        "type": "string",
+        "minLength": 43,
+        "maxLength": 44
+      },
+      "claimerIdentity": {
+        "position": 1,
+        "type": "array",
+        "byteArray": true,
+        "minItems": 32,
+        "maxItems": 32
+      },
+      "amountCoins": {
+        "position": 2,
+        "type": "number"
+      },
+      "amountUSD": {
+        "position": 3,
+        "type": "number"
+      }
+    },
+    "required": [
+      "$createdAt",
+      "$updatedAt",
+      "taskId"
+    ],
+    "additionalProperties": false
+  }
+}
