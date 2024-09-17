@@ -108,4 +108,8 @@ Additional properties are not allowed.
 
 ---
 
+The `$createdAt` and `$updatedAt` fields are specified in the documents. They are automatically filled in, and are used to track the date of document creation and updating.
+
+---
+
 This schema ensures that all data related to projects, tasks, and claims is properly structured and validated before being stored on the Dash Platform.
