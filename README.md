@@ -66,10 +66,16 @@ The `Tasks` document is used to define individual tasks within a project.
   - Description: The ID of the project to which this task belongs.  
   - Byte Array: true  
   - Length: 32 bytes.
+  
+- **status** (string, required):  
+  - Position: 5  
+  - Description: The status of the claim.  
+  - Enum: `pending`, `in_progress`, `completed`, `cancelled`, `paid`.
 
 #### Required Fields
 - `title`
 - `projectId`
+- `status`
 - `$createdAt`
 - `$updatedAt`
 
@@ -94,17 +100,11 @@ The `Claim` document records claims for work done on tasks.
 - **amountUSD** (number, required):  
   - Position: 3  
   - Description: The equivalent amount in USD being claimed.
-  
-- **status** (string, required):  
-  - Position: 4  
-  - Description: The status of the claim.  
-  - Enum: `pending`, `approved`, `rejected`.
 
 #### Required Fields
 - `taskId`
 - `amountCredits`
 - `amountUSD`
-- `status`
 - `$createdAt`
 - `$updatedAt`
 
