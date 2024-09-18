@@ -23,6 +23,8 @@
     },
     "required": [
       "name",
+      "description",
+      "url",
       "$createdAt",
       "$updatedAt"
     ],
@@ -59,10 +61,10 @@
       },
       "projectId": {
         "position": 4,
-        "type": "string",
-        "description": "Project Id",
-        "minLength": 43,
-        "maxLength": 44
+        "type": "array",
+        "byteArray": true,
+        "minItems": 32,
+        "maxItems": 32
       }
     },
     "required": [
@@ -78,30 +80,32 @@
     "properties": {
       "taskId": {
         "position": 0,
-        "type": "string",
-        "minLength": 43,
-        "maxLength": 44
-      },
-      "claimerIdentity": {
-        "position": 1,
         "type": "array",
         "byteArray": true,
         "minItems": 32,
         "maxItems": 32
       },
-      "amountCoins": {
-        "position": 2,
+      "amountCredits": {
+        "position": 1,
         "type": "number"
       },
       "amountUSD": {
-        "position": 3,
+        "position": 2,
         "type": "number"
+      },
+      "status": {
+        "position": 3,
+        "type": "string",
+        "enum": ["pending", "approved", "rejected"]
       }
     },
     "required": [
       "$createdAt",
       "$updatedAt",
-      "taskId"
+      "taskId",
+      "amountCredits",
+      "amountUSD",
+      "status"
     ],
     "additionalProperties": false
   }
