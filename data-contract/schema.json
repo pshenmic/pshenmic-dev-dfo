@@ -65,6 +65,18 @@
         "byteArray": true,
         "minItems": 32,
         "maxItems": 32
+      },
+      "status": {
+        "position": 5,
+        "type": "string",
+        "description": "Task status",
+        "enum": [
+          "pending",
+          "in_progress",
+          "completed",
+          "cancelled",
+          "paid"
+        ]
       }
     },
     "required": [
@@ -92,11 +104,6 @@
       "amountUSD": {
         "position": 2,
         "type": "number"
-      },
-      "status": {
-        "position": 3,
-        "type": "string",
-        "enum": ["pending", "approved", "rejected"]
       }
     },
     "required": [
@@ -104,8 +111,7 @@
       "$updatedAt",
       "taskId",
       "amountCredits",
-      "amountUSD",
-      "status"
+      "amountUSD"
     ],
     "additionalProperties": false
   }
