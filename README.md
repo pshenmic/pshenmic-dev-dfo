@@ -15,18 +15,20 @@ The `Project` document defines the structure for storing project information.
   - Description: The name of the project.  
   - Maximum Length: 63 characters.
   
-- **description** (string):  
+- **description** (string, required):  
   - Position: 1  
   - Description: A detailed description of the project.  
   - Maximum Length: 1000 characters.
   
-- **url** (string):  
+- **url** (string, required):  
   - Position: 2  
   - Description: The URL associated with the project.  
   - Maximum Length: 255 characters.
 
 #### Required Fields
 - `name`
+- `description`
+- `url`
 - `$createdAt`
 - `$updatedAt`
 
@@ -59,11 +61,11 @@ The `Tasks` document is used to define individual tasks within a project.
   - Byte Array: true  
   - Length: 32 bytes.
   
-- **projectId** (string, required):  
+- **projectId** (array, required):  
   - Position: 4  
   - Description: The ID of the project to which this task belongs.  
-  - Minimum Length: 43 characters.  
-  - Maximum Length: 44 characters.
+  - Byte Array: true  
+  - Length: 32 bytes.
 
 #### Required Fields
 - `title`
@@ -79,28 +81,30 @@ Additional properties are not allowed.
 
 The `Claim` document records claims for work done on tasks.
 
-- **taskId** (string, required):  
+- **taskId** (array, required):  
   - Position: 0  
   - Description: The ID of the task for which the claim is being made.  
-  - Minimum Length: 43 characters.  
-  - Maximum Length: 44 characters.
-  
-- **claimerIdentity** (array):  
-  - Position: 1  
-  - Description: The identity of the claimer.  
   - Byte Array: true  
   - Length: 32 bytes.
   
-- **amountCoins** (number):  
+- **amountCredits** (number, required):  
   - Position: 2  
-  - Description: The amount of coins being claimed.
+  - Description: The amount of credits being claimed.
   
-- **amountUSD** (number):  
+- **amountUSD** (number, required):  
   - Position: 3  
-  - Description: The amount of USD being claimed.
+  - Description: The equivalent amount in USD being claimed.
+  
+- **status** (string, required):  
+  - Position: 4  
+  - Description: The status of the claim.  
+  - Enum: `pending`, `approved`, `rejected`.
 
 #### Required Fields
 - `taskId`
+- `amountCredits`
+- `amountUSD`
+- `status`
 - `$createdAt`
 - `$updatedAt`
 
@@ -108,7 +112,14 @@ Additional properties are not allowed.
 
 ---
 
-The `$createdAt` and `$updatedAt` fields are specified in the documents. They are automatically filled in, and are used to track the date of document creation and updating.
+### Common Fields
+
+In all documents, the following fields are automatically managed:
+
+- **$createdAt**: Timestamp of when the document was created.
+- **$updatedAt**: Timestamp of the last update to the document.
+
+These fields ensure proper tracking of document lifecycle events.
 
 ---
 
