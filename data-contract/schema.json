@@ -21,13 +21,7 @@
         "maxLength": 255
       }
     },
-    "required": [
-      "name",
-      "description",
-      "url",
-      "$createdAt",
-      "$updatedAt"
-    ],
+    "required": ["name", "description", "url", "$createdAt", "$updatedAt"],
     "additionalProperties": false
   },
   "Tasks": {
@@ -74,17 +68,18 @@
           "pending",
           "in_progress",
           "completed",
-          "cancelled",
+          "will_not_implement",
           "paid"
         ]
       }
     },
-    "required": [
-      "title",
-      "projectId",
-      "$createdAt",
-      "$updatedAt"
-    ],
+    "comment": {
+      "position": 6,
+      "type": "string",
+      "description": "Change status comment",
+      "maxLength": 1000
+    },
+    "required": ["title", "projectId", "$createdAt", "$updatedAt"],
     "additionalProperties": false
   },
   "Claim": {
@@ -104,6 +99,12 @@
       "amountUSD": {
         "position": 2,
         "type": "number"
+      },
+      "deliverable": {
+        "position": 3,
+        "type": "string",
+        "description": "Claim deliverable",
+        "maxLength": 255
       }
     },
     "required": [
@@ -111,7 +112,8 @@
       "$updatedAt",
       "taskId",
       "amountCredits",
-      "amountUSD"
+      "amountUSD",
+      "deliverable"
     ],
     "additionalProperties": false
   }

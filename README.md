@@ -45,17 +45,17 @@ The `Tasks` document is used to define individual tasks within a project.
   - Description: The title of the task.  
   - Maximum Length: 63 characters.
   
-- **description** (string):  
+- **description** (string, optional):  
   - Position: 1  
   - Description: A detailed description of the task.  
   - Maximum Length: 1000 characters.
   
-- **url** (string):  
+- **url** (string, optional):  
   - Position: 2  
   - Description: A URL with further details about the task.  
   - Maximum Length: 255 characters.
   
-- **assignee** (array):  
+- **assignee** (array, optional):  
   - Position: 3  
   - Description: The identity of the assignee who will execute the task.  
   - Byte Array: true  
@@ -69,8 +69,13 @@ The `Tasks` document is used to define individual tasks within a project.
   
 - **status** (string, required):  
   - Position: 5  
-  - Description: The status of the claim.  
-  - Enum: `pending`, `in_progress`, `completed`, `cancelled`, `paid`.
+  - Description: The status of the task.  
+  - Enum: `pending`, `in_progress`, `completed`, `will_not_implement`, `paid`.
+
+- **comment** (string, optional):  
+  - Position: 6  
+  - Description: A comment on the status change of the task.  
+  - Maximum Length: 1000 characters.
 
 #### Required Fields
 - `title`
@@ -94,17 +99,23 @@ The `Claim` document records claims for work done on tasks.
   - Length: 32 bytes.
   
 - **amountCredits** (number, required):  
-  - Position: 2  
+  - Position: 1  
   - Description: The amount of credits being claimed.
   
 - **amountUSD** (number, required):  
-  - Position: 3  
+  - Position: 2  
   - Description: The equivalent amount in USD being claimed.
+  
+- **deliverable** (string, required):  
+  - Position: 3  
+  - Description: Link to the deliverable for the claim.  
+  - Maximum Length: 255 characters.
 
 #### Required Fields
 - `taskId`
 - `amountCredits`
 - `amountUSD`
+- `deliverable`
 - `$createdAt`
 - `$updatedAt`
 
