@@ -92,6 +92,8 @@ Additional properties are not allowed.
 
 The `Claim` document records claims for work done on tasks.
 
+The `Claim` has fields `"transferable": 1` and `"tradeMode": 1`, which indicate the ability to transfer the document and the possibility of its purchase, respectively.
+
 - **taskId** (array, required):  
   - Position: 0  
   - Description: The ID of the task for which the claim is being made.  

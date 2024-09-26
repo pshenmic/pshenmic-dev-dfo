@@ -84,6 +84,8 @@
   },
   "Claim": {
     "type": "object",
+    "transferable": 1,
+    "tradeMode": 1,
     "properties": {
       "taskId": {
         "position": 0,
